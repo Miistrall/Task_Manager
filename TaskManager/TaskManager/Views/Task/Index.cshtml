@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <table class="table table-hover">
                 <tr>
                     <th>Title</th>
@@ -34,9 +34,11 @@
         </div>
     </div>
     <div class="col-6">
-        <a class="btn btn-success" href=@Url.Action("Add")>Add</a>
+        <a class="btn btn-success" href=@Url.Action("Add")>Add Task</a>
     </div>
+    <p></p>
+    <p></p>
     <div class="col-6">
-    @Html.ActionLink("Log Out", "LogOut", "Account", new { @class = "btn btn-lg btn-primary" })
+        <a class="btn btn-primary btn-sm" href="@Url.Action("LogOut", "Account")"><i class="fa fa-home"></i> Log Out</a>
     </div>
 </div>
