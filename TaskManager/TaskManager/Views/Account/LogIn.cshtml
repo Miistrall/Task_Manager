@@ -1,0 +1,43 @@
+﻿@model TaskManager.ViewModels.LogInViewModel
+
+<!DOCTYPE html>
+<html lang="eng">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Karolina">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Signin Page</title>
+
+    <!-- Bootstrap core CSS -->
+    @*<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">*@
+
+    <link href="~/css/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div class = "container">
+    <div class="wrapper">
+        
+        @using (Html.BeginForm("LogIn", "Account", FormMethod.Post, new {@class="form-signin"} ))
+        {
+            <h3 class="form-signin-heading">Welcome Back! Please Sign In</h3>
+            <hr class="colorgraph"><br>
+
+            @Html.TextBoxFor(x => x.Login ,new { @class = "form-control", placeholder="Login", autofocus=""})
+            @Html.PasswordFor(x => x.Password ,new { @class = "form-control", placeholder="Password"})
+            
+            @Html.ValidationSummary()
+            <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" href="@Url.Action("Index", "Task") "><i class="fa fa-user-o"></i> Log In</button>
+            <p></p>
+            <a class="btn btn-primary btn-sm" href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Main Page</a>
+        }
+
+    </div>
+</div>
+
+</body>
+</html>

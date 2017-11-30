@@ -1,0 +1,71 @@
+﻿@using System.Security.Cryptography.X509Certificates
+@model TaskManager.Models.TaskModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+            <h3>Fill form</h3>
+
+            @using (Html.BeginForm("Add", "Task", FormMethod.Post))
+            {
+                <div class="form-group row">
+                    @Html.LabelFor(x => x.Title, new { @class = "col-form-label col-4" })
+                    <div class="col-8">
+                        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(x => x.Content, new { @class = "col-form-label col-4" })
+                    <div class="col-8">
+                        @Html.TextBoxFor(x => x.Content, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                @*<div class="form-group row">
+                    @Html.LabelFor(x => x.StartDate, new { @class = "col-form-label col-4" })
+                    <div class="col-8">
+                        @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control" })
+                    </div>
+                </div>*@
+                <div class="form-group row">
+                    <label for="example-datetime-local-input" class="col-4 col-form-label">Start date and hour</label>
+                    <div class="col-8">
+                        @Html.TextBoxFor(x => x.StartDate, new { @class = "form-control", type = "datetime-local", value = "2017-08-19T13:45:00", id = "example-datetime-local-input" })
+                        @*<input class="form-control" type="datetime-local" value="2017-08-19T13:45:00" id="example-datetime-local-input">*@
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(x => x.IsAllDay, new { @class = "col-form-label col-4" })
+                    <div class="col-8">
+                        @Html.CheckBoxFor(x => x.IsAllDay, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                @*<div class="form-group row">
+                    @Html.LabelFor(x => x.EndDate, new { @class = "col-form-label col-4" })
+                    <div class="col-8">
+                        @Html.TextBoxFor(x => x.EndDate, new { @class = "form-control" })
+                    </div>
+                </div>*@
+                <div class="form-group row">
+                    <label for="example-datetime-local-input" class="col-4 col-form-label">End date and hour</label>
+                    <div class="col-8">
+                        @Html.TextBoxFor(x => x.EndDate, new { @class = "form-control", type = "datetime-local", value = "2017-08-19T13:45:00", id = "example-datetime-local-input" })
+                        @*<input class="form-control" type="datetime-local" value="2017-08-19T13:45:00" id="example-datetime-local-input">*@
+                    </div>
+                </div>
+                <div class="form-group row">
+                    @Html.LabelFor(x => x.Important, new { @class = "col-form-label col-4" })
+                    <div class="col-8">
+                        @Html.CheckBoxFor(x => x.Important, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <button class="btn btn-primary">Add</button>
+            }
+            @Html.ValidationSummary()
+        </div>
+    </div>
+</div>

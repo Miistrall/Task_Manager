@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TaskManager.Models.TaskModel>
+
+@*<div class="container">
+    <div class="row">
+        <div class="col-8">
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                @Html.ActionLink("Log Out", "LogOut", "Account", new { @class = "btn btn-lg btn-primary" })
+            }
+
+            <p><i class="fa fa-user-o fa-2x"></i> User</p>
+
+            <p><i class="fa fa-paper-plane fa-2x"></i> Task</p>
+        </div>
+    </div>
+</div>*@
+
+<p>@ViewBag.Message</p>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-hover">
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Start date</th>
+                    <th>Is all day</th>
+                    <th>End date</th>
+                    <th>Is important</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => item.Title)</td>
+                        <td>@Html.DisplayFor(x => item.Content)</td>
+                        <td>@Html.DisplayFor(x => item.StartDate)</td>
+                        <td>@Html.DisplayFor(x => item.IsAllDay)</td>
+                        <td>@Html.DisplayFor(x => item.EndDate)</td>
+                        <td>@Html.DisplayFor(x => item.Important)</td>
+                        <td>
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Edit", new {id = item.Id})">Edit</a>
+                            <a class="btn btn-warning btn-sm" href="@Url.Action("Remove", new {id = item.Id})">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="col-6">
+        <a class="btn btn-success" href=@Url.Action("Add")>Add</a>
+    </div>
+    <div class="col-6">
+    @Html.ActionLink("Log Out", "LogOut", "Account", new { @class = "btn btn-lg btn-primary" })
+    </div>
+</div>
