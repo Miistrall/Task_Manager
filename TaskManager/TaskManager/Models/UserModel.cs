@@ -11,8 +11,7 @@ namespace TaskManager.Models
 {
     public class UserModel : IdentityUser<int>
     {
-        [Required]
-        public string Name { get; set; }
+        //public string Name { get; set; }
 
         public ICollection<TaskModel> Tasks { get; set; }
     }

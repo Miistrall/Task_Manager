@@ -25,8 +25,8 @@ namespace TaskManager.Controllers
         public IActionResult Index()
         {
             var userName = User.Identity.Name;
-            var taskListForUser = Context.Users.Include(x => x.Tasks).Single(x => x.UserName == userName);
-            return View(taskListForUser.Tasks.ToList());
+            var taskListForUser = Context.Users.Include(x => x.Tasks).Single(x => x.UserName == userName).Tasks.ToList();
+            return View(taskListForUser);
         }
 
         [HttpGet]
@@ -40,7 +40,8 @@ namespace TaskManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                Context.Tasks.Add(taskModel);
+                var userName = User.Identity.Name;
+                Context.Users.Include(x => x.Tasks).Single(x => x.UserName == userName).Tasks.Add(taskModel);
                 Context.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -51,8 +52,11 @@ namespace TaskManager.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var movie = Context.Tasks.Single(x => x.Id == id);
-            return View(movie);
+            var userName = User.Identity.Name;
+            var user = Context.Users.Include(x => x.Tasks).Single(x => x.UserName == userName);
+            var task = user.Tasks.Single(x => x.Id == id);
+           
+            return View(task);
         }
 
         [HttpPost]

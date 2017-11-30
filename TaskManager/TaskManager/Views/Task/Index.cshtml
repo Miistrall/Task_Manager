@@ -1,21 +1,5 @@
 ﻿@model IEnumerable<TaskManager.Models.TaskModel>
 
-@*<div class="container">
-    <div class="row">
-        <div class="col-8">
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                @Html.ActionLink("Log Out", "LogOut", "Account", new { @class = "btn btn-lg btn-primary" })
-            }
-
-            <p><i class="fa fa-user-o fa-2x"></i> User</p>
-
-            <p><i class="fa fa-paper-plane fa-2x"></i> Task</p>
-        </div>
-    </div>
-</div>*@
-
 <p>@ViewBag.Message</p>
 
 <div class="container">
