@@ -25,7 +25,7 @@ namespace TaskManager.Controllers
         public IActionResult Index()
         {
             var userName = User.Identity.Name;
-            var taskListForUser = Context.Users.Include(x => x.Tasks).Single(x => x.UserName == userName).Tasks.ToList();
+            var taskListForUser = Context.Users.Include(x => x.Tasks).Single(x => x.UserName == userName).Tasks.OrderBy(x => x.StartDate.Date).ToList();
             return View(taskListForUser);
         }
 

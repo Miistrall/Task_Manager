@@ -1,44 +1,96 @@
 ﻿@model IEnumerable<TaskManager.Models.TaskModel>
 
-<p>@ViewBag.Message</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <table class="table table-hover">
-                <tr>
-                    <th>Title</th>
-                    <th>Content</th>
-                    <th>Start date</th>
-                    <th>Is all day</th>
-                    <th>End date</th>
-                    <th>Is important</th>
-                </tr>
+    <title>Task list for User</title>
 
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@Html.DisplayFor(x => item.Title)</td>
-                        <td>@Html.DisplayFor(x => item.Content)</td>
-                        <td>@Html.DisplayFor(x => item.StartDate)</td>
-                        <td>@Html.DisplayFor(x => item.IsAllDay)</td>
-                        <td>@Html.DisplayFor(x => item.EndDate)</td>
-                        <td>@Html.DisplayFor(x => item.Important)</td>
-                        <td>
-                            <a class="btn btn-info btn-sm" href="@Url.Action("Edit", new {id = item.Id})">Edit</a>
-                            <a class="btn btn-warning btn-sm" href="@Url.Action("Remove", new {id = item.Id})">Remove</a>
-                        </td>
-                    </tr>
-                }
-            </table>
+    <link href="starter-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Navbar</a>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">User Login</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="@Url.Action("LogOut", "Account")">LogOut <span class="sr-only">(current)</span></a>
+                </li>
+
+                @*<li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>*@
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search task</button>
+            </form>
         </div>
+    </nav>
+
+    <p>@ViewBag.Message</p>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table table-hover">
+                    <tr>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Start date</th>
+                        <th>Is all day</th>
+                        <th>End date</th>
+                        <th>Is important</th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(x => item.Title)</td>
+                            <td>@Html.DisplayFor(x => item.Content)</td>
+                            <td>@Html.DisplayFor(x => item.StartDate)</td>
+                            <td>@Html.DisplayFor(x => item.IsAllDay)</td>
+                            <td>@Html.DisplayFor(x => item.EndDate)</td>
+                            <td>@Html.DisplayFor(x => item.Important)</td>
+                            <td>
+                                <a class="btn btn-info btn-sm" href="@Url.Action("Edit", new {id = item.Id})">Edit</a>
+                                <a class="btn btn-warning btn-sm" href="@Url.Action("Remove", new {id = item.Id})">Remove</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+        <div class="col-6">
+            <a class="btn btn-success" href=@Url.Action("Add")>Add Task</a>
+        </div>
+
+        @*<div class="col-6">
+            <a class="btn btn-primary btn-sm" href="@Url.Action("LogOut", "Account")"><i class="fa fa-home"></i> Log Out</a>
+        </div>*@
     </div>
-    <div class="col-6">
-        <a class="btn btn-success" href=@Url.Action("Add")>Add Task</a>
-    </div>
-    <p></p>
-    <p></p>
-    <div class="col-6">
-        <a class="btn btn-primary btn-sm" href="@Url.Action("LogOut", "Account")"><i class="fa fa-home"></i> Log Out</a>
-    </div>
-</div>
+  </body>
+</html>
