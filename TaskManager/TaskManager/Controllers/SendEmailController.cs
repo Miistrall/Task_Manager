@@ -52,11 +52,11 @@ namespace TaskManager.Controllers
                     smtp.Credentials = new NetworkCredential("task_manager@wp.com", "Taskmanager");
                     
                     smtp.Send(msg);
-                    return Content("wysłano");
+                    return Content("wysłano email na podany adres");
                 }
                 catch (Exception ex)
                 {
-                    return Content("nie udało się");
+                    return Content("nie udało się wysłać maila");
                 }
 
             return View();
