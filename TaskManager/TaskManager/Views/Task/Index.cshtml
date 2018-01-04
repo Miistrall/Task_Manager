@@ -25,10 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">User Login</a>
+                    <a class="nav-link disabled" href="#">User Logged</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="@Url.Action("LogOut", "Account")">LogOut <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+
                 </li>
 
                 @*<li class="nav-item">
@@ -51,8 +54,14 @@
         </div>
     </nav>
 
-    <p>@ViewBag.Message</p>
-
+  <p>@ViewBag.Message</p>
+    <div class="col-6">
+        <p id="date"></p>
+        <script>
+           document.getElementById("date").innerHTML = Date();
+        </script>
+    </div>
+    <p> </p>
     <div class="container">
         <div class="row">
             <div class="col-12">
